@@ -1,11 +1,21 @@
+import { useEffect, useRef } from 'react';
+
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const FlightDelayResults = ({ data, loading }) => {
+  const resultRef = useRef();
+
+  useEffect(() => {
+    resultRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, [data]);
+
   return (
     <>
-      <div className="text-center">
-        <h1 className="font-black text-xl pb-5">Result {loading}</h1>
+      <div className="text-center w-full pb-36 md:w-[450px]">
+        <h1 ref={resultRef} className="font-black text-xl pb-5">
+          Result
+        </h1>
         <div className="space-y-5">
           {data.LESS_THAN_30_MINUTES && (
             <div className="bg-gray-900 shadow-2xl rounded-lg p-3 space-x-2 flex justify-between items-center">

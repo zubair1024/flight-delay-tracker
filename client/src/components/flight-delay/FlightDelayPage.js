@@ -41,19 +41,6 @@ const FlightInfoPage = ({ loading, getFlightDelayInfo, data }) => {
   const onFormSubmit = (e) => {
     try {
       e.preventDefault();
-      debugger;
-      // getFlightDelayInfo({
-      //   originLocationCode: 'NCE',
-      //   destinationLocationCode: 'IST',
-      //   departureDate: '2020-08-01',
-      //   departureTime: '18:20:00',
-      //   arrivalDate: '2020-08-01',
-      //   arrivalTime: '22:15:00',
-      //   aircraftCode: '321',
-      //   carrierCode: 'TK',
-      //   flightNumber: '1816',
-      //   duration: 'PT31H10M',
-      // });
       getFlightDelayInfo(formData);
     } catch (err) {
       console.error(err);
@@ -62,7 +49,7 @@ const FlightInfoPage = ({ loading, getFlightDelayInfo, data }) => {
 
   return (
     <div className="FlightInfoPage min-h-screen flex flex-col justify-center items-center space-y-10 md:flex-row md:space-y-0 md:space-x-7">
-      <div className="bg-gray-900 p-5 rounded-lg shadow-2xl w-80">
+      <div className="bg-gray-900 p-5 rounded-lg shadow-2xl my-10 md:my-0 w-full md:w-[450px]">
         <form
           className="flex flex-col justify-center items-center space-y-2"
           onSubmit={onFormSubmit}

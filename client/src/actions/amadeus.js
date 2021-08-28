@@ -1,3 +1,4 @@
+import axios from 'axios';
 import qs from 'qs';
 
 import { setAlert } from './alert';
@@ -23,11 +24,17 @@ export const setLoading = (boolState) => (dispatch) => {
 export const getFlightDelayInfo = (flightInfo) => async (dispatch) => {
   try {
     //patch time
-    flightInfo.departureTime = flightInfo.departureTime + ':00';
-    flightInfo.arrivalTime = flightInfo.arrivalTime + ':00';
+    const data = {
+      ...flightInfo,
+      departureTime: flightInfo.departureTime + ':00',
+      arrivalTime: flightInfo.arrivalTime + ':00',
+    };
+
     dispatch(setLoading(true));
-    const queryString = qs.stringify(flightInfo);
-    const res = await fetch(`/api/flight/delay-info?${queryString}`);
+    const queryString = qs.stringify(data);
+    const res = await axios.get(
+      process.env.REACT_APP_API_URL + `/api/flight/delay-info?${queryString}`
+    );
     dispatch({
       type: FLIGHT_DELAY_LOADED,
       payload: res.data,
