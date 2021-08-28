@@ -1,6 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 
+import { apiBaseUrl } from '../utils/url';
 import { setAlert } from './alert';
 import {
   FLIGHT_DELAY_ERROR,
@@ -32,9 +33,7 @@ export const getFlightDelayInfo = (flightInfo) => async (dispatch) => {
 
     dispatch(setLoading(true));
     const queryString = qs.stringify(data);
-    const res = await axios.get(
-      process.env.REACT_APP_API_URL + `/api/flight/delay-info?${queryString}`
-    );
+    const res = await axios.get(apiBaseUrl + `/api/flight/delay-info?${queryString}`);
     dispatch({
       type: FLIGHT_DELAY_LOADED,
       payload: res.data,
