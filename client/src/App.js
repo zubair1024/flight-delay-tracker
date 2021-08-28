@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AboutPage from './components/about/AboutPage';
 import FlightDelayPage from './components/flight-delay/FlightDelayPage';
 import Alert from './components/layout/Alert';
+import Footer from './components/layout/Footer';
 import Navbar from './components/layout/Navbar';
 import store from './store';
 import setHeaders from './utils/setHeaders';
@@ -20,11 +21,11 @@ const App = () => {
 
   return (
     <Provider store={store}>
+      <Navbar />
+      <Alert />
       <Router>
         <>
-          <div className="bg-purple-900">
-            <Navbar />
-            <Alert />
+          <div>
             <section className="min-h-full text-white">
               <Switch>
                 <Route exact path="/" component={FlightDelayPage} />
@@ -34,6 +35,7 @@ const App = () => {
           </div>
         </>
       </Router>
+      <Footer />
     </Provider>
   );
 };

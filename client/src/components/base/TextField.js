@@ -11,7 +11,7 @@ const TextField = ({ value, label, field, placeholder, required, onFieldChange }
     <>
       <div className="flex flex-col w-full">
         {label && (
-          <label for={field} className="text-xs font-light ml-1">
+          <label htmlFor={field} className="text-xs font-light ml-1">
             {label}
           </label>
         )}
