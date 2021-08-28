@@ -24,10 +24,6 @@ const run = async () => {
 
   const PORT = process.env.PORT ?? 5000;
 
-  app.get('/', (_req, res) => {
-    res.json({ success: true });
-  });
-
   // Define Routes
   app.use('/api/flight', (await import('./routes/api/flight.js')).default);
 
